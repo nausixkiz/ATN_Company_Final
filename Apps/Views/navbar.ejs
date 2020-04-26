@@ -10,15 +10,13 @@
               <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search">
               <button class="btn text-light search" type="submit">Search</button>
             </form> 
-{{#if user}}
+<% if(user) { %>
+            <li class="nav-item"><a class="nav-link text-light">Welcome <%= user.name %></a></li>
             <li class="nav-item"><a class="nav-link text-light" href="/logout">Logout</a></li>
-{{else}}
-            <li class="nav-item"><a class="nav-link text-light" href="/register">register</a></li>
-            <li class="nav-item"><a class="nav-link text-light" href="/login">login</a></li>
-{{/if}}
-            
- 
-                
+<% } else { %>
+            <li class="nav-item"><a class="nav-link text-light" href="/register">Register</a></li>
+            <li class="nav-item"><a class="nav-link text-light" href="/login">Login</a></li>
+<% } %>  
           </ul>
         </div>  
 </nav><br>
