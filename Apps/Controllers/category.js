@@ -6,7 +6,7 @@ async function listCategory (req, res) {
 }
 function addCategory(req, res)
 {
-    res.render('add&edit-category', {data:{}})
+    res.render('add-category', {data:{}})
 }
 async function postAddCategory(req, res)
 {
@@ -16,14 +16,14 @@ async function postAddCategory(req, res)
     {
         newCategory = new CategoryModel.CategoryModel({cat_name:name})
         newCategory.save((err)=>{
-            if(err){res.render('add&edit-category', {data:{}})}
+            if(err){res.render('add-category', {data:{}})}
             else{res.redirect('/admin/categories')}
         })
     }
     else
     {
         error = "Errors!"
-        res.render('add&edit-category', {data:{error:error}})
+        res.render('add-category', {data:{error:error}})
     }
 }
 function postEditCategory (req, res, next)
@@ -33,7 +33,7 @@ function postEditCategory (req, res, next)
         else {
             if (err.name == 'ValidationError') {
                 handleValidationError(err, req.body);
-                res.render("add&edit-category", {
+                res.render("edit-category", {
                     category: req.body
                 });
             }
@@ -44,7 +44,7 @@ function getEditCategory (req, res, next)
 {
     CategoryModel.CategoryModel.findById(req.params.id, (err, doc) => {
         if (!err) {
-            res.render("add&edit-category", {data:{
+            res.render("edit-category", {data:{
                 category: doc
             }});
         }
