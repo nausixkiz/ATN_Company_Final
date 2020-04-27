@@ -1,5 +1,8 @@
 {
   "name": "atn_company",
+  "engines": {
+    "node": "12.16.2"
+  },
   "version": "1.0.0",
   "description": "Project For ATN Company",
   "main": "index.js",
