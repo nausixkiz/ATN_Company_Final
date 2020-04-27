@@ -13,7 +13,7 @@ const port = process.env.PORT || 3000;
 require('./Apps/Kernel')(app, express, Body_parser, passport, compression, cookieParser, flash, expressSession, formidable)
 require('./Config/passport-config')(passport)
 
-app.listen(port)
+app.listen(9999)
 
 app.use('/', require('./router/web'))
 
