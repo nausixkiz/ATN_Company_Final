@@ -1,51 +1,46 @@
-<%- include('layout/header') -%>
-<title>Login</title>
-</head>
-<body>
+<%- include('./core/header') -%>
+<div class="inner-page-banner-area">
   <div class="container">
-
-<%- include('./layout/errors') -%>
-      <h1 class="text-center text-success">ATN Login</h1>
-      <form action="" method="POST" class="text-success">
-        <div class="form-group">
-          <label for="email">Email/Username</label>
-          <input class="form-control" type="text" name="email" id="email">
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input class="form-control" type="password" name="password" id="password">
-        </div>
-
-        <div class="form-group">
-          <label for="checkbox">Remember Password</label>
-          <input type="checkbox" id="checkbox" name="checkbox">
-        </div>
-
-        <div class="form-group">
-          <button class="btn btn-block btn-success" type="submit">Login</button>
-        </div>
-      </form>
-      <a class="btn btn-block btn-success" href="/">Back</a>
+      <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="breadcrumb-area">
+                  <h1>Login</h1>
+                  <ul>
+    <li><a href="/store">Home</a> /</li>
+                      <li>Login</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="login-registration-page-area">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+              <div class="login-registration-field">
+                  <h2 class="cart-area-title"><i class="fa fa-file-text-o" aria-hidden="true"></i> Login</h2>
+                  <%- include('./layout/errors') -%>
+    <form action="" method="post">
+                      <label>Username or email address *</label>
+                      <input type="text" name="email" placeholder="Name or E-mail" />
+                      <label>Password *</label>
+                      <input type="password" name="password" placeholder="Password" />
+                      <button class="btn-send-message disabled" type="submit">Login</button>
+                      <span><input type="checkbox" name="remember"/>Remember Me</span>
+    </form>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+              <div class="login-registration-field">
+    <h2 class="cart-area-title"><i class="fa fa-file-o" aria-hidden="true"></i> New Customer</h2>
+    <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+    <div >
+      <a href="/register" class="btn-send-message disabled">Register</a>
     </div>
-      <!-- <script>
-        var decodeedCookied = decodeURIComponent(document.cookie)
-        var ca = decodeedCookied.split(';')
-        var username = ""
-        for (var i = 9; i < ca[0].length; i++) {
-          username += ca[0][i]
-        }
-        var password = ""
-        for (var i = 10; i < ca[1].length; i++) {
-          password += ca[1][i]
-        }
-        document.getElementById("username").value = username
-        document.getElementById("password").value = password
-      </script> -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<%- include('./core/footer') -%>

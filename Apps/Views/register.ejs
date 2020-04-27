@@ -1,71 +1,46 @@
-<%- include('layout/header') -%>
-<title>Register</title>
-</head>
-<body>
-  <div class="container">
-
-<%- include('./layout/errors') -%>
-<% if(locals.input) { %>
-      <h1 class="text-center text-info">ATN Register</h1>
-      
-      <form action="" method="POST" class="text-info">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input class="form-control" type="text" name="username" value="<%= input.username %>" id="username">
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input class="form-control" type="password" name="password" value="<%= input.password %>" id="password">
-        </div>
-
-        <div class="form-group">
-          <label for="passwordConf">Confirm Password</label>
-          <input class="form-control" type="password" name="passwordConf" value="<%= input.passwordConf %>" id="passwordConf">
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input class="form-control" type="text" name="email" value="<%= input.email %>" id="email">
-        </div>
-        <div class="form-group">
-          <button class="btn btn-block btn-info" type="submit">Register</button>
-        </div>
-      </form>
-<% } else { %>
-  <h1 class="text-center text-info">ATN Register</h1>
-      <form action="" method="POST" class="text-info">
-          <div class="form-group">
-            <label for="username">Username</label>
-            <input class="form-control" type="text" name="username" id="username">
+<%- include('core/header') -%>
+        <div class="inner-page-banner-area">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <div class="breadcrumb-area">
+                          <h1>Register</h1>
+                          <ul>
+            <li><a href="/store">Home</a> /</li>
+                              <li>Register</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
           </div>
-          
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input class="form-control" type="password" name="password" id="password">
-          </div>
+      </div>
+<div class="login-registration-page-area">
+          <div class="container">
+              <div class="row">
+                  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                      <div class="login-registration-field">
+                          <h2 class="cart-area-title"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;Register</h2>
+            <p>If you already have an account with us, please login at the <a href="{{ route('login') }}">login page</a>.</p>
+            <%- include('./layout/errors') -%>
+            <form action="" method="post">
+                              <label>Your Username *</label>
+                              <input type="text" name="username" placeholder="Your username" />
+                              <label>Email *</label>
+              <input type="email" name="email" placeholder="Your email" />
+              <label>Telephone *</label>
+              <input type="tel" name="telephone" placeholder="Your telephone number" />
+              <label>Password *</label>
+              <input type="password" name="password" placeholder="Password" />
+              <label>Password Confirm *</label>
+                              <input type="password" name="passwordConf" placeholder="Confirm your assword" />
+              <span><input type="checkbox" name="Term"/>I have read and agree to the <a href="#" class="agree"><b>Terms and Conditions</b></span>
+              <br>
+              <button class="btn-send-message disabled" type="submit">Register</button>
+            </form>
+                      </div>
+                  </div>
 
-          <div class="form-group">
-            <label for="passwordConf">Confirm Password</label>
-            <input class="form-control" type="password" name="passwordConf" id="passwordConf">
+              </div>
           </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input class="form-control" type="text" name="email" id="email">
-          </div>
-          
-          <div class="form-group">
-            <button class="btn btn-info btn-block" type="submit">Register</button>
-          </div>
-        </form>
-<% } %>
-        <a href="/" class="btn btn-block btn-info">Back</a>
-</div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  </body>
-</html>
+      </div>
+      <%- include('core/footer') -%>

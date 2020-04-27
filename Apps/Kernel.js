@@ -3,6 +3,8 @@ module.exports = (app, express, Body_parser, passport, compression, cookieParser
 
     app.use(compression());
 
+    //app.use(formidable());
+
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -11,7 +13,7 @@ module.exports = (app, express, Body_parser, passport, compression, cookieParser
     app.use(expressSession({
         secret: 'RRRRRRRRRYYYYYYYYYYYOOOOOOOOOOOOO',
         saveUninitialized: true,
-        resave : true
+        resave : false
     }))
 
     app.use(flash());

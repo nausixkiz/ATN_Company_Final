@@ -11,5 +11,4 @@ const schemaCategory = new mongoose.Schema({
 const CategoryModel = mongoose.model("Category", schemaCategory, "Category")
 module.exports = {
     CategoryModel: CategoryModel
-
 }

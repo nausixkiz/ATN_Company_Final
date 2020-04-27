@@ -1,4 +1,4 @@
-const  CategoryModel = require('../Models/categories')
+//const  CategoryModel = require('../Models/categories')
 const mongoose =require('../connection')()
 const schemaProduct = new mongoose.Schema({
     _id: {type:mongoose.Schema.ObjectId, auto: true},
@@ -18,6 +18,4 @@ schemaProduct.virtual('product_category', {
 })
 const ProductModel = mongoose.model("Product", schemaProduct, "Product")
 
-module.exports =  {
-    ProductModel:ProductModel
-}
+module.exports = ProductModel

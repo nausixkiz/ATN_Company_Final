@@ -1,37 +1,46 @@
 const ProductModel = require('../Models/products')
-const  CategoryModel = require('../Models/categories')
+const CategoryModel = require('../Models/categories')
 const path = require('path')
 const formidable = require('formidable')
 const mv = require('mv')
 async function getList(req, res){
-    let product = await ProductModel.ProductModel.find().populate('product_category')
+    let product = await ProductModel.find().populate('product_category')
     product = JSON.parse(JSON.stringify(product))
     res.render('list-product', {data:{product:product}})
 }
 function getAdd(req, res){
     CategoryModel.CategoryModel.find((err, docs)=>{
-        res.render('add-product', {data:{category:docs}})
+        res.render('add&edit-product', {data:{category:docs}})
     })
 }
-async function postAdd(req, res){
-    var form = new formidable.IncomingForm();
-    form.parse(req, function(err, fields, files) {
-        let old_url = files.prd_image.path
-        let new_url = path.join(__dirname, '../../public/uploads', files.prd_image.name)
-        mv(old_url, new_url, function(err){
-            if(err) throw err
-            files.prd_image = files.prd_image.name
-            let new_product = new ProductModel(fields, {versionKey: false})
-            new_product.save();
-            res.redirect('/admin/product');
+function postAdd(req, res) {
+
+    var form = new formidable.IncomingForm()
+    form.parse(req, (err, fields, files) => {
+        // Upload
+        var oldUrl = files.prd_image.path
+        var newUrl = path.join(__dirname, "../../public/uploads", files.prd_image.name)
+        mv(oldUrl, newUrl, (err) => {
+            if (err) throw err
         })
+        // Add Product
+        delete fields.sbm
+        fields.prd_image = files.prd_image.name
+        let addProduct = new ProductModel(fields)
+        addProduct.save()
+        res.redirect("/admin/products")
     })
 }
 function getEdit(req, res){
     res.render('edit-product')
 }
 function getDelete(req, res){
-    res.send('Delete Product')
+    ProductModel.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            res.redirect('/admin/products');
+        }
+        else { console.log('Error in employee delete :' + err); }
+    });
 }
 module.exports = {
     getList:getList,

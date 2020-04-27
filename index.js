@@ -8,10 +8,9 @@ const flash = require('connect-flash')
 const cookieParser = require('cookie-parser')
 const bcrypt = require('bcrypt')
 const formidable = require('formidable');
-const fileUpload = require('express-fileupload');
 const port = process.env.PORT || 3000;
 
-require('./Apps/Kernel')(app, express, Body_parser, passport, compression, cookieParser, flash, expressSession, formidable, fileUpload)
+require('./Apps/Kernel')(app, express, Body_parser, passport, compression, cookieParser, flash, expressSession, formidable)
 require('./Config/passport-config')(passport)
 
 app.listen(port)
