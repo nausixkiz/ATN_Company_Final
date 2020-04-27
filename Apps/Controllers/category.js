@@ -1,6 +1,4 @@
 const CategoryModel = require('../Models/categories')
-const productModel = require('../Models/products')
-const mongoose = require('../connection')()
 async function listCategory (req, res) {
     let category = await CategoryModel.CategoryModel.find().populate('category_product')
     var lsCategory = JSON.parse(JSON.stringify(category))
@@ -8,7 +6,7 @@ async function listCategory (req, res) {
 }
 function addCategory(req, res)
 {
-    res.render('add-category', {data:{}})
+    res.render('add&edit-category', {data:{}})
 }
 async function postAddCategory(req, res)
 {
@@ -18,28 +16,53 @@ async function postAddCategory(req, res)
     {
         newCategory = new CategoryModel.CategoryModel({cat_name:name})
         newCategory.save((err)=>{
-            if(err){res.render('add-category', {data:{}})}
-            else{res.redirect('/category/listCategory')}
+            if(err){res.render('add&edit-category', {data:{}})}
+            else{res.redirect('/admin/categories')}
         })
     }
     else
     {
         error = "Errors!"
-        res.render('add-category', {data:{error:error}})
+        res.render('add&edit-category', {data:{error:error}})
     }
 }
-function editCategory (req, res, next)
+function postEditCategory (req, res, next)
 {
-    res.render('edit-category')
+    CategoryModel.CategoryModel.findOneAndUpdate({ _id: req.body._id }, {cat_name: req.body.cate_name}, { new: true }, (err, doc) => {
+        if (!err) { res.redirect('/admin/categories'); }
+        else {
+            if (err.name == 'ValidationError') {
+                handleValidationError(err, req.body);
+                res.render("add&edit-category", {
+                    category: req.body
+                });
+            }
+        }
+    });
+}
+function getEditCategory (req, res, next)
+{
+    CategoryModel.CategoryModel.findById(req.params.id, (err, doc) => {
+        if (!err) {
+            res.render("add&edit-category", {data:{
+                category: doc
+            }});
+        }
+    });
 }
 function deleteCategory(req, res)
 {
-    res.send('delete category')
+    CategoryModel.CategoryModel.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            res.redirect('/admin/categories');
+        }
+    });
 }
 module.exports = {
     listCategory:listCategory,
     addCategory:addCategory,
-    editCategory:editCategory,
+    getEditCategory:getEditCategory,
+    postEditCategory:postEditCategory,
     deleteCategory:deleteCategory,
     postAddCategory:postAddCategory
 }

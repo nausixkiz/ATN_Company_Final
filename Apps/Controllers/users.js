@@ -3,9 +3,16 @@ const mongoose = require("../connection.js");
 
 function listUser(req, res)
 {
-    UserModel.UserModel.find((err, docs)=>{
-        res.render('user', {data:{user:docs}})
-    })
+    UserModel.find((err, docs) => {
+        if (!err) {
+            res.render("list-users", {
+                data:{users: docs}
+            });
+        }
+        else {
+            console.log('Error in retrieving employee list :' + err);
+        }
+    });
 }
 function addUser(req, res)
 {
@@ -38,11 +45,23 @@ async function postAddUser(req, res) {
 }
 function editUser(req, res)
 {
-    res.render('admin/edit_user')
+    UserModel.findById(req.params.id, (err, doc) => {
+        if (!err) {
+            res.render("add&edit-user.ejs", {
+                viewTitle: "Update User",
+                employee: doc
+            });
+        }
+    });
 }
 function deleteUser(req, res)
 {
-    res.send('delete user')
+    UserModel.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            res.redirect('/admin/users');
+        }
+        else { console.log('Error in employee delete :' + err); }
+    });
 }
 module.exports = {
     listUser:listUser,

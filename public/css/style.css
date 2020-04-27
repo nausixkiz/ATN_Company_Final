@@ -1,5 +1,6 @@
 body {
     background-image: url('/background.jpg');
+    padding-top: 56px;   
 }
 .card {
     margin: 10px 10px;

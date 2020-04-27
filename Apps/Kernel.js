@@ -6,10 +6,12 @@ module.exports = (app, express, Body_parser, passport, compression, cookieParser
     app.use(passport.initialize());
     app.use(passport.session());
 
+    //app.use(expressSession())
+    
     app.use(expressSession({
         secret: 'RRRRRRRRRYYYYYYYYYYYOOOOOOOOOOOOO',
-        saveUninitialized: false,
-        resave : false
+        saveUninitialized: true,
+        resave : true
     }))
 
     app.use(flash());
@@ -20,7 +22,7 @@ module.exports = (app, express, Body_parser, passport, compression, cookieParser
     app.set('views', __dirname+'/Views')
     app.set('view engine', 'ejs')
     
-    app.use('/static', express.static(__dirname+ '/../Public'))
+    app.use('/static', express.static(__dirname+ '/../public'))
 
     app.use(function(req, res, next) {
         res.locals.success_msg = req.flash('success_msg');
@@ -28,5 +30,4 @@ module.exports = (app, express, Body_parser, passport, compression, cookieParser
         res.locals.error = req.flash('error');
         next();
     });
-
 }

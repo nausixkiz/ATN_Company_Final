@@ -1,5 +1,5 @@
-<%- include('header') -%>
-<title>Add Category</title>
+<%- include('layout/header') -%>
+<title>Management Category</title>
 </head>
 <body>
   <div class="container">
@@ -13,13 +13,14 @@
   <% } %>
     <h1 class="text-center text-info">Please Fill Out Category Information</h1>
     <form role="form" class="text-info" action="" method="POST">
+      <input type="hidden" name="_id" value="<%=data.category._id%>">
       <div class="form-group">
         <label for="cat_name">Category Name:</label>
-        <input required type="text" name="cate_name" class="form-control">
+        <input required type="text" name="cate_name" value="<%=data.category.cat_name%>" class="form-control">
       </div>
-      <button type="submit" name="sbm" class="btn btn-block btn-success">Add</button><br>
+      <button type="submit" name="sbm" class="btn btn-block btn-success">Submit</button><br>
     </form>
-    <a class="btn btn-block btn-info" href="#">Back</a>
+    <a class="btn btn-block btn-info" href="/store">Back</a>
   </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

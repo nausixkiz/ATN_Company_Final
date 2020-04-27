@@ -1,29 +1,16 @@
 <%- include('layout/header') -%>
-<title>Category</title>
+<title>Admin UI</title>
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center text-info">Your Category</h1>
-    <table class="table table-hover text-info">
-      <tr>
-        <th>ID</th>
-        <th>Category's Name</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-    <%for(x in data.category){%>
-    <tr>
-      <td><%=data.category[x]._id%></td>
-      <td><%=data.category[x].cat_name%></td>
-      <td><a class="btn btn-info" href="/admin/categories/edit/<%=data.category[x]._id%>">Edit</a></td>
-      <td><a class="btn btn-info" href="/admin/categories/delete/<%=data.category[x]._id%>">Delete</a></td>
-    </tr>
-    <%}%>
-    <tr>
-      <td colspan="8"><a class="btn btn-info btn-block" href="/store">Back</a></td>
-    </tr>
-    </table>
-  </div>
+        <a class="btn btn-danger" href="/">Home</a>
+        <a class="btn btn-danger" href="/admin/dashboard">Admin Dashboard</a>
+        <a class="btn btn-secondary" href="/admin/users">Manage Account</a>
+        <a class="btn btn-warning" href="/admin/products">Management Product</a>
+        <a class="btn btn-success" href="/admin/categories">Management Category</a>
+        <a class="btn btn-primary" href="/logout">Logout</a>
+    </div>
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

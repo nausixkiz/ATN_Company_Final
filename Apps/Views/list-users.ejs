@@ -1,22 +1,24 @@
 <%- include('layout/header') -%>
-<title>Category</title>
+<title>User</title>
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center text-info">Your Category</h1>
+    <h1 class="text-center text-info">Your Users</h1>
     <table class="table table-hover text-info">
       <tr>
         <th>ID</th>
-        <th>Category's Name</th>
+        <th>User's Name</th>
+        <th>User's Email</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
-    <%for(x in data.category){%>
+    <%for(x in data.users){%>
     <tr>
-      <td><%=data.category[x]._id%></td>
-      <td><%=data.category[x].cat_name%></td>
-      <td><a class="btn btn-info" href="/admin/categories/edit/<%=data.category[x]._id%>">Edit</a></td>
-      <td><a class="btn btn-info" href="/admin/categories/delete/<%=data.category[x]._id%>">Delete</a></td>
+      <td><%=data.users[x]._id%></td>
+      <td><%=data.users[x].username%></td>
+      <td><%=data.users[x].email%></td>
+      <td><a class="btn btn-info" href="/admin/users/edit/<%=data.users[x]._id%>">Edit</a></td>
+      <td><a class="btn btn-info" href="/admin/users/delete/<%=data.users[x]._id%>">Delete</a></td>
     </tr>
     <%}%>
     <tr>

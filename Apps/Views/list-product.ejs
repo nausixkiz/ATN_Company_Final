@@ -1,4 +1,4 @@
-<%- include('header') -%>
+<%- include('layout/header') -%>
 <title>Edit</title>
 </head>
 <body>
@@ -19,9 +19,9 @@
       <td><%=data.product[x].prd_name%></td>
       <td><%=data.product[x].prd_price%></td>
       <td><%=data.product[x].prd_details%></td>
-      <td style="text-align: center"><img width="130" height="180" src="/static/images/products/<%=data.product[x].prd_image%>" /></td>
-      <td><a class="btn btn-info" href="#">Edit</a></td>
-      <td><a class="btn btn-info" href="#">Delete</a></td>
+      <td style="text-align: center"><img width="130" height="180" src=/static/uploads/<%=data.product[x].prd_image%>" /></td>
+      <td><a class="btn btn-info" href="/admin/products/edit/<%=data.product[x]._id%>">Edit</a></td>
+      <td><a class="btn btn-info" href="/admin/products/delete/<%=data.product[x]._id%>">Delete</a></td>
     </tr>
   <% } %>
 <% } %>

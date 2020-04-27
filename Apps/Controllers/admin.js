@@ -1,6 +1,6 @@
 function dashboard(req, res)
 {
-    res.render('admin/dashboard')
+    res.render('dashboard')
 }
 module.exports = {
     dashboard:dashboard,
