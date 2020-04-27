@@ -8,12 +8,13 @@ const flash = require('connect-flash')
 const cookieParser = require('cookie-parser')
 const bcrypt = require('bcrypt')
 const formidable = require('formidable');
-const port = process.env.PORT || 3000;
 
 require('./Apps/Kernel')(app, express, Body_parser, passport, compression, cookieParser, flash, expressSession, formidable)
 require('./Config/passport-config')(passport)
 
-app.listen(9999)
+const port = process.env.PORT || 3000;
+
+app.listen(port)
 
 app.use('/', require('./router/web'))
 
