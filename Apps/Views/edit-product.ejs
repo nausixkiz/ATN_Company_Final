@@ -1,44 +1,33 @@
-<%- include('header') -%>
+<%- include('layout/header') -%>
 <title>Edit Product</title>
 </head>
 <body>
   <div class="container">
-<% if(locals.error) { %>
-  <% for(var i = 0; i < error.length; i++) { %>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <strong><%= error[i] %></strong> 
-    </div>
-  <% } %>
-  <a class="btn btn-block btn-info" href="/store/product">Back</a>
-<% } %>
-<% if(locals.result) { %>
-  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <strong><%= result %></strong> 
-  </div>
-    <a class="btn btn-block btn-info" href="/store/product">Back</a>
-<% } %>
-<% if(locals.input) { %>
+    <!-- <%if(data && data.error){%>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong><%=data.error%></strong> 
+      </div>
+    <% } %> -->
+
       <h1 class="text-center text-info">Edit Product</h1>
       <form class="text-info" action="" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="_id" value="<%=data.product._id%>">
         <div class="form-group">  
           <label for="name">Product's Name</label>
-          <input class="form-control" type="text" name="name" value="<%= input.name %>" id="name">
+          <input class="form-control" type="text" name="name" value="<%=data.product.prd_name%>" id="name">
         </div>
 
         <div class="form-group"> 
           <label for="price">Price</label>
-          <input class="form-control" type="text" name="price" value="<%= input.price %>" id="price">
+          <input class="form-control" type="text" name="price" value="<%=data.product.prd_price%>" id="price">
         </div>
 
         <div class="form-group"> 
           <label for="info">Information</label>
-          <input class="form-control" type="text" name="info" value="<%= input.info %>" id="info">
+          <input class="form-control" type="text" name="info" value="<%=data.product.prd_details%>" id="info">
         </div>
 
         <div class="form-group"> 
@@ -50,8 +39,8 @@
           <button class="btn btn-block btn-info" type="submit">Update</button>
         </div>
       </form>
-<% } %>
-      <a class="btn btn-block btn-info" href="/store/product">Back</a>
+
+      <a class="btn btn-block btn-info" href="/store">Back</a>
 </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

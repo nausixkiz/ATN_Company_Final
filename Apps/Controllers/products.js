@@ -10,7 +10,7 @@ async function getList(req, res){
 }
 function getAdd(req, res){
     CategoryModel.CategoryModel.find((err, docs)=>{
-        res.render('add&edit-product', {data:{category:docs}})
+        res.render('add-product', {data:{category:docs}})
     })
 }
 function postAdd(req, res) {
@@ -32,7 +32,17 @@ function postAdd(req, res) {
     })
 }
 function getEdit(req, res){
-    res.render('edit-product')
+    ProductModel.findById(req.params.id, (err, doc) => {
+        if (!err) {
+            res.render("edit-product.ejs", {data:{
+                product: doc
+            }
+            });
+        }
+    });
+}
+function postEdit(req, res){
+    //
 }
 function getDelete(req, res){
     ProductModel.findByIdAndRemove(req.params.id, (err, doc) => {
@@ -46,6 +56,7 @@ module.exports = {
     getList:getList,
     getAdd:getAdd,
     getEdit:getEdit,
+    postEdit:postEdit,
     getDelete:getDelete,
     postAdd:postAdd
 }
